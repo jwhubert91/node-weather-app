@@ -1,7 +1,7 @@
 const request = require('request');
 
 const forecast = (latitude, longitude, callback) => {
-	const url = `https://api.darksky.net/forecast/9d73a57cdab3aaaab9d7101fa64aa6a7/${latitude},${longitude}?units=si`;
+	const url = `https://api.darksky.net/forecast/9d73a57cdab3aaaab9d7101fa64aa6a7/${latitude},${longitude}?units=us`;
 
 	request({ url, json: true }, (error, {body}) => {
 		if (error) {
@@ -10,7 +10,7 @@ const forecast = (latitude, longitude, callback) => {
 			callback('There was an error fetching that weather forecast data.', undefined);
 		} else {
 			callback(undefined, 
-				`${body.daily.data[0].summary} It is currently ${body.currently.temperature} degrees. There is a ${body.currently.precipProbability}% chance of rain.`
+				`It is currently ${body.currently.temperature} degrees Fahrenheit. ${body.daily.data[0].summary} The current wind speed is ${body.currently.windSpeed} mph and there is a ${body.currently.precipProbability}% chance of rain.`
 			);
 		}
 	})

@@ -5,7 +5,6 @@ const messageTwo = document.querySelector('#message-2');
 
 weatherForm.addEventListener('submit', (e) => {
 	const location = search.value;
-	console.log(location);
 	messageOne.textContent = 'Loading...';
 	messageTwo.innerHTML = '';
 
